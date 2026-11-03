@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-unbounded);
+  --font-body: var(--font-onest);
+  --font-mono: var(--font-jbmono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #07070c;
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.4);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  border: 2px solid #07070c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+@keyframes drift-a {
+  0% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(7%, 6%, 0) scale(1.14);
+  }
+}
+
+@keyframes drift-b {
+  0% {
+    transform: translate3d(5%, 3%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-7%, -6%, 0) scale(0.94);
+  }
+}
+
+@keyframes shimmer-line {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-drift-a {
+  animation: drift-a 16s ease-in-out infinite alternate;
+}
+
+.animate-drift-b {
+  animation: drift-b 21s ease-in-out infinite alternate;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.text-gradient {
+  background-image: linear-gradient(100deg, #c4b5fd 0%, #e879f9 45%, #fbbf24 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-gold {
+  background-image: linear-gradient(100deg, #fde68a 0%, #fbbf24 55%, #f59e0b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.09) 50%,
+    transparent 80%
+  );
+  animation: shimmer-line 1.7s ease-in-out infinite;
+}
